@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Systems - Exam Revision Guide</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --success: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .chapter-info {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+        
+        .card h3 {
+            color: var(--dark);
+            margin: 15px 0 10px;
+            font-size: 1.1rem;
+        }
+        
+        .card ul, .card ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .card li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background-color: #fff9e6;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f1c40f;
+            margin: 15px 0;
+        }
+        
+        .key-term {
+            background-color: #e8f4fc;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .definition {
+            background-color: #f0f7fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .comparison-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comparison-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .diagram {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .quick-quiz {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .quick-quiz h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .quiz-item {
+            margin-bottom: 15px;
+        }
+        
+        .answer {
+            background-color: var(--success);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Database Systems</h1>
+            <p class="subtitle">Chapter 14: Databases and Database Management Systems</p>
+            <p class="subtitle">Exam Revision Guide</p>
+        </header>
+        
+        <div class="chapter-info">
+            <p>Based on "Understanding Computers: Today and Tomorrow, 15th Edition" by Deborah Morley & Charles S. Parker</p>
+        </div>
+        
+        <div class="grid">
+            <!-- What is a Database? -->
+            <div class="card">
+                <h2>What is a Database?</h2>
+                <div class="definition">
+                    <p><span class="key-term">Database</span>: A collection of related data stored in a manner that enables information to be retrieved as needed.</p>
+                </div>
+                
+                <div class="definition">
+                    <p><span class="key-term">DBMS</span> (Database Management System): Software used to create, maintain, and access databases.</p>
+                </div>
+                
+                <h3>Database Components</h3>
+                <ul>
+                    <li><span class="key-term">Tables</span>: Collection of related records</li>
+                    <li><span class="key-term">Fields/Columns</span>: Single category of data</li>
+                    <li><span class="key-term">Records/Rows</span>: Collection of related fields</li>
+                </ul>
+                
+                <h3>Primary Key</h3>
+                <p>A field that uniquely identifies records in a table and relates tables to each other.</p>
+                
+                <h3>Database Personnel</h3>
+                <ul>
+                    <li>Database Designers</li>
+                    <li>Database Developers</li>
+                    <li>Database Programmers</li>
+                    <li>Database Administrators</li>
+                    <li>Users</li>
+                </ul>
+            </div>
+            
+            <!-- Data Concepts & Characteristics -->
+            <div class="card">
+                <h2>Data Concepts & Characteristics</h2>
+                
+                <h3>Data Hierarchy</h3>
+                <ul>
+                    <li>Fields → Records → Tables → Database</li>
+                </ul>
+                
+                <h3>Entities & Relationships</h3>
+                <ul>
+                    <li><span class="key-term">Entity</span>: Person, object, or event of importance</li>
+                    <li><span class="key-term">Attributes</span>: Characteristics of an entity</li>
+                    <li><span class="key-term">Relationship</span>: Association between entities</li>
+                </ul>
+                
+                <h3>Relationship Types</h3>
+                <ul>
+                    <li><span class="key-term">One-to-One (1:1)</span>: Not common</li>
+                    <li><span class="key-term">One-to-Many (O:M)</span>: Most common</li>
+                    <li><span class="key-term">Many-to-Many (M:M)</span>: Complex relationships</li>
+                </ul>
+                
+                <h3>Data Definition</h3>
+                <p>Process of describing properties of data:</p>
+                <ul>
+                    <li>Name (unique within table)</li>
+                    <li>Data type (Text, Number, Currency, etc.)</li>
+                    <li>Description</li>
+                    <li>Properties (field size, format, range, etc.)</li>
+                </ul>
+            </div>
+            
+            <!-- Data Integrity, Security & Privacy -->
+            <div class="card">
+                <h2>Data Integrity, Security & Privacy</h2>
+                
+                <h3>Data Integrity</h3>
+                <ul>
+                    <li>Accuracy of data</li>
+                    <li>Data validation ensures entered data is valid</li>
+                    <li>Database locking prevents concurrent changes</li>
+                </ul>
+                
+                <h3>Data Security</h3>
+                <ul>
+                    <li>Protects against destruction and misuse</li>
+                    <li>Prevents unauthorized access</li>
+                    <li>Includes backup and disaster-recovery procedures</li>
+                </ul>
+                
+                <h3>Data Privacy</h3>
+                <ul>
+                    <li>Growing concern with vast personal data storage</li>
+                    <li>Breach notification laws in many states</li>
+                    <li>Costly breaches (approx. $200 per record)</li>
+                </ul>
+            </div>
+            
+            <!-- Database Classifications -->
+            <div class="card">
+                <h2>Database Classifications</h2>
+                
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <h4>Single-User vs. Multiuser</h4>
+                        <p><strong>Single-User</strong>: One computer, one user</p>
+                        <p><strong>Multiuser</strong>: Multiple users (most business databases)</p>
+                    </div>
+                    
+                    <div class="comparison-item">
+                        <h4>Client-Server & N-Tier</h4>
+                        <p><strong>Client-Server</strong>: Front-end clients, back-end server</p>
+                        <p><strong>N-Tier</strong>: Additional middleware layers</p>
+                    </div>
+                </div>
+                
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <h4>Centralized vs. Distributed</h4>
+                        <p><strong>Centralized</strong>: Single computer location</p>
+                        <p><strong>Distributed</strong>: Data divided among networked computers</p>
+                    </div>
+                    
+                    <div class="comparison-item">
+                        <h4>Disk-Based vs. In-Memory</h4>
+                        <p><strong>Disk-Based</strong>: Data stored on hard drives</p>
+                        <p><strong>In-Memory</strong>: Data stored in main memory (faster)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Database Models -->
+            <div class="card">
+                <h2>Database Models</h2>
+                
+                <h3>Relational Database Model (RDBMS)</h3>
+                <ul>
+                    <li>Most widely used today</li>
+                    <li>Data organized in tables related by common fields</li>
+                    <li>Design process: Purpose → Tables/Fields → Normalization → Structure</li>
+                </ul>
+                
+                <h3>Object-Oriented Database Model</h3>
+                <ul>
+                    <li>Stores multiple data types as objects with related code</li>
+                    <li>Can contain video, text with music, etc.</li>
+                    <li>Uses Object Query Language (OQL)</li>
+                </ul>
+                
+                <h3>Hybrid Database Models</h3>
+                <ul>
+                    <li>Combination of two or more database types</li>
+                    <li>Example: Hybrid XML/Relational Database</li>
+                </ul>
+                
+                <h3>Multidimensional Databases (MDDB)</h3>
+                <ul>
+                    <li>Used with data warehousing</li>
+                    <li>Used with Online Analytical Processing (OLAP)</li>
+                    <li>Types: MOLAP, ROLAP, HOLAP</li>
+                </ul>
+            </div>
+            
+            <!-- Cloud Databases -->
+            <div class="card">
+                <h2>Cloud Databases</h2>
+                
+                <p>Hosted on cloud provider's servers, accessible via the Web.</p>
+                
+                <h3>Uses</h3>
+                <ul>
+                    <li>Information retrieval for Web pages</li>
+                    <li>E-commerce (product info, pricing, shopping carts)</li>
+                    <li>Enable dynamic Web pages</li>
+                </ul>
+                
+                <h3>How They Work</h3>
+                <ol>
+                    <li>User makes request via Web form</li>
+                    <li>Web server converts request to database query</li>
+                    <li>Database server performs query</li>
+                    <li>Results sent back to user via Web page</li>
+                </ol>
+                
+                <h3>Middleware</h3>
+                <p>Software connecting Web server and DBMS:</p>
+                <ul>
+                    <li>JavaScript, VBScript</li>
+                    <li>CGI Scripts, Active Server Pages (ASPs)</li>
+                    <li>PHP Scripts</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Database Evolution -->
+        <div class="card">
+            <h2>Database Evolution</h2>
+            
+            <div class="highlight">
+                <p>Databases have evolved from simple flat files to sophisticated relational, object-oriented, and multidimensional systems.</p>
+            </div>
+            
+            <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                <thead>
+                    <tr style="background-color: var(--primary); color: white;">
+                        <th style="padding: 12px; text-align: left;">Model</th>
+                        <th style="padding: 12px; text-align: left;">Year Began</th>
+                        <th style="padding: 12px; text-align: left;">Data Organization</th>
+                        <th style="padding: 12px; text-align: left;">Skill Level Required</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Flat Files</td>
+                        <td style="padding: 10px;">1940s</td>
+                        <td style="padding: 10px;">Flat files</td>
+                        <td style="padding: 10px;">Programmer</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Hierarchical</td>
+                        <td style="padding: 10px;">1960s</td>
+                        <td style="padding: 10px;">Trees</td>
+                        <td style="padding: 10px;">Programmer</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Network</td>
+                        <td style="padding: 10px;">1980s</td>
+                        <td style="padding: 10px;">Trees</td>
+                        <td style="padding: 10px;">Programmer</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Relational</td>
+                        <td style="padding: 10px;">1970s</td>
+                        <td style="padding: 10px;">Tables and relations</td>
+                        <td style="padding: 10px;">User</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Object-Oriented</td>
+                        <td style="padding: 10px;">1980s</td>
+                        <td style="padding: 10px;">Objects</td>
+                        <td style="padding: 10px;">User</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Multi-dimensional</td>
+                        <td style="padding: 10px;">1990s</td>
+                        <td style="padding: 10px;">Data cubes</td>
+                        <td style="padding: 10px;">User</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- DBMS Advantages & Disadvantages -->
+        <div class="card">
+            <h2>DBMS Advantages & Disadvantages</h2>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <h4>Advantages</h4>
+                    <ul>
+                        <li>Low redundancy</li>
+                        <li>Faster response time</li>
+                        <li>Lower storage requirements</li>
+                        <li>Easier to secure</li>
+                        <li>Increased data accuracy</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-item">
+                    <h4>Disadvantages</h4>
+                    <ul>
+                        <li>Increased vulnerability</li>
+                        <li>Backup is essential</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <p>File Management Systems have higher redundancy as tables are not related and cannot retrieve data from multiple tables at once.</p>
+            </div>
+        </div>
+        
+        <!-- Quick Quiz -->
+        <div class="quick-quiz">
+            <h2>Quick Quiz</h2>
+            
+            <div class="quiz-item">
+                <p><strong>1.</strong> A column in a database in which customer names are stored would be referred to as a ______.</p>
+                <p>a) field &nbsp; b) record &nbsp; c) table</p>
+                <div class="answer">Answer: a) field</div>
+            </div>
+            
+            <div class="quiz-item">
+                <p><strong>2.</strong> True or False: Data validation procedures are used to ensure that data entered into a database matches the specified type, format, and allowable value.</p>
+                <div class="answer">Answer: True</div>
+            </div>
+            
+            <div class="quiz-item">
+                <p><strong>3.</strong> The ______ contains metadata about the database tables in a database.</p>
+                <div class="answer">Answer: data dictionary</div>
+            </div>
+            
+            <div class="quiz-item">
+                <p><strong>4.</strong> Which type of database system is beginning to be used in high-end systems where performance is crucial?</p>
+                <p>a) In-memory databases &nbsp; b) Disk-based databases &nbsp; c) Single-user databases</p>
+                <div class="answer">Answer: a) In-memory databases</div>
+            </div>
+            
+            <div class="quiz-item">
+                <p><strong>5.</strong> Which of the following is the most widely used type of database today?</p>
+                <p>a) Network &nbsp; b) Relational &nbsp; c) Object-oriented</p>
+                <div class="answer">Answer: b) Relational</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Database Systems Exam Revision Guide | Based on Chapter 14 of "Understanding Computers: Today and Tomorrow, 15th Edition"</p>
+            <p>Good luck with your exam!</p>
+        </footer>
+    </div>
+</body>
+</html>
